@@ -506,9 +506,16 @@
             document.getElementById('start-screen').classList.add('fade-in');
             document.getElementById('review-area').classList.add('hidden');
             document.getElementById('username').value = ""; 
+
+            const btn = document.getElementById('save-sheet-btn');
+            btn.disabled = false;
+            btn.innerText = "결과 제출하기";
+            btn.classList.remove("bg-gray-400", "cursor-not-allowed");
+            btn.classList.add("bg-green-600", "hover:bg-green-700");
         }
     </script>
 </body>
 </html>
+
 
 
