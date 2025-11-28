@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2B SaaS 비즈니스 용어 실전 테스트 (랜덤 모드)</title>
+    <title>B2B SaaS 비즈니스 용어 실전 테스트</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
@@ -20,19 +20,19 @@
         <div id="start-screen" class="p-8 text-center">
             <div class="mb-6 text-indigo-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
             </div>
             <h1 class="text-3xl font-bold text-gray-800 mb-2">B2B SaaS<br>비즈니스 용어 실전 테스트</h1>
             <p class="text-gray-600 mb-2 font-medium">Random Challenge Mode</p>
-            <p class="text-sm text-gray-500 mb-6">총 80개 문제 풀에서 난이도별 20문제가 랜덤 출제됩니다.</p>
+            <p class="text-sm text-gray-500 mb-6">총 80문제 중 20문제가 랜덤 출제됩니다.<br>문제를 풀고 결과를 제출해보세요!</p>
             
             <div class="bg-gray-50 p-6 rounded-lg mb-6 text-left">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                    이름을 입력해주세요
+                    이름(닉네임)을 입력해주세요
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-indigo-500" id="username" type="text" placeholder="Name">
-                <p class="text-xs text-gray-500 mt-2">* 매번 다른 문제가 나오니 여러 번 도전해보세요!</p>
+                <input class="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-indigo-500" id="username" type="text" placeholder="이름 또는 닉네임">
+                <p class="text-xs text-gray-500 mt-2">* 결과 제출 시 사용되는 이름입니다.</p>
             </div>
 
             <button onclick="startQuiz()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 transform hover:scale-105 text-lg shadow-md">
@@ -82,23 +82,28 @@
             </div>
 
             <div class="space-y-3 mb-8">
-                <!-- 결과 공유 버튼 -->
+                <button id="save-sheet-btn" onclick="saveToGoogleSheet()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition shadow-md flex justify-center items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    결과 제출하기
+                </button>
                 <button onclick="shareResult()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition shadow-md flex justify-center items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
                     </svg>
-                    결과 복사하기 (공유)
+                    결과 공유하기
                 </button>
                 <button onclick="toggleReview()" class="w-full bg-white border-2 border-indigo-600 text-indigo-600 font-bold py-3 rounded-lg hover:bg-indigo-50 transition shadow-sm">
                     틀린 문제 검토하기
                 </button>
                 <button onclick="restartQuiz()" class="w-full text-gray-500 hover:text-gray-700 font-medium py-2 text-sm underline">
-                    새로운 문제로 다시 풀기
+                    새로운 문제로 다시 도전
                 </button>
             </div>
 
             <!-- 오답 검토 영역 (처음엔 숨김) -->
-            <div id="review-area" class="hidden text-left bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <div id="review-area" class="hidden text-left bg-gray-50 rounded-lg p-4 border border-gray-200 mt-4">
                 <h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">오답 노트 📝</h3>
                 <div id="review-content" class="space-y-6">
                     <!-- 틀린 문제들이 여기에 추가됨 -->
@@ -108,9 +113,57 @@
     </div>
 
     <script>
-        // ---------------------------------------------------------
-        // [문제 은행] 총 80문제 (Easy, Medium, Hard, Hell 각 20개씩)
-        // ---------------------------------------------------------
+        // =========================================================
+        // =========================================================
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwi7I5Qxp0t72bZeqKziTvwMVi-wrGBP_n3ZhnDp05WgSyGsCWJv6ZmRRl8I9VEmLEM/exec"; 
+
+        // =========================================================
+        // [구글 시트 저장 함수]
+        // =========================================================
+        function saveToGoogleSheet() {
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("여기에")) {
+                alert("구글 시트 스크립트 URL이 설정되지 않았습니다.\n코드 내 'GOOGLE_SCRIPT_URL' 변수를 확인해주세요.");
+                return;
+            }
+
+            const btn = document.getElementById('save-sheet-btn');
+            btn.disabled = true;
+            btn.innerText = "제출 중...";
+
+            const data = {
+                name: userName,
+                score: userScore * 5,
+                correctCount: userScore
+            };
+
+            // CORS 문제 회피를 위해 'no-cors' 모드 사용 (성공 여부 확인 어려움)
+            // 혹은 text/plain으로 보내고 Apps Script에서 JSON.parse 처리
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors", 
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                alert("결과가 성공적으로 제출되었습니다!");
+                btn.innerText = "제출 완료";
+                btn.classList.add("bg-gray-400", "cursor-not-allowed");
+                btn.classList.remove("bg-green-600", "hover:bg-green-700");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("제출 중 오류가 발생했습니다.");
+                btn.disabled = false;
+                btn.innerText = "결과 제출하기 (구글 시트 저장)";
+            });
+        }
+
+
+        // =========================================================
+        // [기존 문제 은행 및 게임 로직]
+        // =========================================================
         const questionBank = [
             // --- Easy (20개) ---
             { diff: "Easy", q: "SaaS 기업 가치 평가의 핵심 지표로, 매년 반복되는 매출의 총합은?", a: 0, options: ["ARR", "TCV", "ACV", "GMV"], desc: "ARR(Annual Recurring Revenue)은 SaaS의 규모를 나타내는 가장 기본 지표입니다." },
@@ -201,9 +254,9 @@
             { diff: "Hell", q: "SaaS Pricing에서 'Decoy Effect(미끼 효과)'를 활용하는 방법은?", a: 1, options: ["가장 싼 요금제 강조", "비싸고 매력 없는 옵션을 넣어 중간 옵션 유도", "모든 기능 무료화", "복잡한 가격표"], desc: "일부러 가성비 안 좋은 비싼 옵션을 옆에 두어, 타겟 옵션(중간)이 혜자처럼 보이게 만듭니다." }
         ];
 
-        // ---------------------------------------------------------
+        // =========================================================
         // [게임 로직]
-        // ---------------------------------------------------------
+        // =========================================================
         let quizSession = []; // 이번 게임에 사용할 20문제
         let currentQuestion = 0;
         let userScore = 0;
@@ -225,8 +278,6 @@
             const selectedHell = shuffleArray(hell).slice(0, 5);
 
             // 3. 순서대로 합치기 (Easy -> Medium -> Hard -> Hell 순서 유지)
-            // * 섞어서 내고 싶으면 여기서 전체를 다시 shuffleArray 하세요. 
-            // * 지금은 난이도 체감을 위해 순차 배치를 유지합니다.
             quizSession = [
                 ...selectedEasy,
                 ...selectedMedium,
@@ -459,4 +510,3 @@
     </script>
 </body>
 </html>
-
