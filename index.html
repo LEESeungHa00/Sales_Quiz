@@ -435,6 +435,12 @@
                 scoreIcon.innerHTML = '<div class="text-6xl">📚</div>';
                 feedbackElement.innerHTML = "새로운 문제들이 좀 있었나요? 오답 노트로 복습해보세요!";
             }
+
+            const btn = document.getElementById('save-sheet-btn');
+            btn.disabled = false;
+            btn.innerText = "결과 제출하기";
+            btn.classList.remove("bg-gray-400", "cursor-not-allowed");
+            btn.classList.add("bg-green-600", "hover:bg-green-700");
         }
 
         function shareResult() {
@@ -516,6 +522,7 @@
     </script>
 </body>
 </html>
+
 
 
 
